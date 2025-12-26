@@ -17,129 +17,85 @@ The site features:
 
 ```
 greenviro-farewell/
-├── index.html          # Main HTML file
+├── index.html              # Main HTML file
+├── server.js               # Express backend server
+├── package.json            # Node.js dependencies
+├── ecosystem.config.js     # PM2 configuration
+├── greenviro.db           # SQLite database (created on first run)
 ├── src/
-│   ├── styles.css      # All CSS styles (mobile-first design)
-│   └── scripts.js      # JavaScript functionality
-└── README.md           # This file
+│   ├── styles.css         # All CSS styles (mobile-first design)
+│   └── scripts.js         # JavaScript with API integration
+├── references/            # Deployment guides and documentation
+│   ├── deployment.md
+│   ├── deployment-checklist.md
+│   ├── quick-start.md
+│   └── changes.md
+└── README.md              # This file
 ```
 
 ### Technology Stack
-- **HTML5** - Semantic markup
-- **CSS3** - Custom properties, Flexbox, Grid, Media Queries
-- **Vanilla JavaScript** - No framework dependencies
-- **Google Fonts** - Playfair Display, Open Sans
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript
+- **Backend**: Node.js, Express.js
+- **Database**: SQLite (lightweight, file-based)
+- **Process Manager**: PM2 (for production deployment)
+- **Fonts**: Google Fonts (Playfair Display, Open Sans)
 
 ### Color Palette
 Gold color scheme ranging from light (`#FFFDF5`) to dark (`#FF6F00`), inspired by the net1io.com color guide.
 
 ### Features
-1. **Visitor Tracking** - Unique visitor count using localStorage
+1. **Visitor Tracking** - Unique visitor count stored in database
 2. **Geolocation** - IP-based location detection via ipapi.co
-3. **Comments System** - Up to 100 messages, 200 characters each
-4. **Mobile-First Design** - Responsive layout for all devices
-5. **XSS Protection** - HTML escaping for user inputs
+3. **Persistent Message Storage** - Messages stored in SQLite, visible to all users
+4. **Comments System** - Up to 100 messages, 200 characters each
+5. **Rate Limiting** - Prevents spam (5 messages per IP per 15 minutes)
+6. **Mobile-First Design** - Responsive layout for all devices
+7. **XSS Protection** - HTML escaping for user inputs
+8. **Real-time Updates** - All users see the same messages
 
-## Deployment Instructions
+## Quick Start (Local Development)
 
-### Option 1: Digital Ocean Apps (Static Site)
-
-1. Push code to a Git repository (GitHub, GitLab, etc.)
-
-2. Go to Digital Ocean Apps platform:
-   - Click "Create App"
-   - Connect your repository
-   - Select the branch to deploy
-
-3. Configure the app:
-   - **Type**: Static Site
-   - **Source Directory**: `/` (root)
-   - **Output Directory**: Leave empty (static files)
-
-4. Deploy and access your site at the provided URL
-
-### Option 2: Digital Ocean Droplet with Nginx
-
-1. SSH into your droplet:
+1. **Install dependencies:**
    ```bash
-   ssh root@your-droplet-ip
+   npm install
    ```
 
-2. Install Nginx:
+2. **Start the server:**
    ```bash
-   apt update
-   apt install nginx -y
+   npm start
    ```
 
-3. Create site directory:
-   ```bash
-   mkdir -p /var/www/greenviro-farewell
+3. **Open browser:**
+   ```
+   http://localhost:3000
    ```
 
-4. Upload files (from your local machine):
-   ```bash
-   scp -r ./* root@your-droplet-ip:/var/www/greenviro-farewell/
-   ```
+## Production Deployment
 
-5. Configure Nginx:
-   ```bash
-   nano /etc/nginx/sites-available/greenviro-farewell
-   ```
-   
-   Add configuration:
-   ```nginx
-   server {
-       listen 80;
-       server_name your-domain.com www.your-domain.com;
-       root /var/www/greenviro-farewell;
-       index index.html;
-       
-       location / {
-           try_files $uri $uri/ =404;
-       }
-   }
-   ```
+### Digital Ocean Deployment
 
-6. Enable site and restart Nginx:
-   ```bash
-   ln -s /etc/nginx/sites-available/greenviro-farewell /etc/nginx/sites-enabled/
-   nginx -t
-   systemctl restart nginx
-   ```
+📖 **Deployment Guides:**
+- **[Quick Start Guide](references/quick-start.md)** - Fast-track deployment (5 steps)
+- **[Complete Deployment Guide](references/deployment.md)** - Full production setup with Nginx & SSL
+- **[Deployment Checklist](references/deployment-checklist.md)** - Interactive step-by-step checklist
+- **[Changes Summary](references/changes.md)** - What changed and why
 
-### Option 3: Digital Ocean Spaces (CDN)
+Quick summary:
+1. Install Node.js and PM2 on your droplet
+2. Upload files and run `npm install`
+3. Start with `pm2 start ecosystem.config.js`
+4. Configure Nginx as reverse proxy (optional)
+5. Setup SSL with Let's Encrypt (optional)
 
-1. Create a Space in Digital Ocean
-2. Upload all files maintaining the directory structure
-3. Enable CDN endpoint
-4. Access via the CDN URL
+### API Endpoints
 
-## Data Persistence Note
+The backend provides these REST endpoints:
 
-**Current Implementation**: Uses `localStorage` for comments storage. This means:
-- Messages persist on the same device/browser
-- Different users on different devices see different messages
-- Good for demo/testing purposes
-
-**For Multi-User Persistence**, consider:
-
-1. **Firebase Realtime Database** (Free tier available)
-   ```javascript
-   // Replace localStorage calls with Firebase
-   import { getDatabase, ref, push, onValue } from "firebase/database";
-   ```
-
-2. **Supabase** (Free tier available)
-   ```javascript
-   // PostgreSQL backend with real-time subscriptions
-   import { createClient } from '@supabase/supabase-js'
-   ```
-
-3. **Simple Backend API** (Node.js + JSON file or SQLite)
-   ```javascript
-   // Add API endpoints for GET/POST messages
-   fetch('/api/messages', { method: 'POST', body: JSON.stringify(message) });
-   ```
+- `GET /api/messages` - Retrieve all messages
+- `POST /api/messages` - Submit a new message
+- `GET /api/visitors/count` - Get total visitor count
+- `POST /api/visitors` - Track a visitor
+- `GET /api/health` - Server health check
 
 ## Usage
 
