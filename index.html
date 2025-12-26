@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farewell & Best Wishes - Greenviro Sdn Bhd</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Section 1: Header Info Bar -->
+    <header class="info-bar">
+        <div class="info-bar-content">
+            <div class="visitor-stats">
+                <span class="visitor-count">👁 Visitors: <span id="visitorCount">0</span></span>
+                <span class="visitor-location">📍 <span id="visitorLocation">Loading...</span></span>
+                <span class="visitor-time">🕐 <span id="visitorTime">Loading...</span></span>
+            </div>
+            <div class="info-bar-footer">
+                <p class="note">📝 To keep WhatsApp cleaner and preserve memories of any comments</p>
+                <p class="copyright">© 2025 | Developed by <a href="https://net1io.com" target="_blank">net1io.com</a></p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section 2: Comments Input Section -->
+        <section class="comments-input-section">
+            <div class="container">
+                <h2>Your Messages Here</h2>
+                <div class="comment-form">
+                    <div class="form-group">
+                        <label for="visitorName">Your Name</label>
+                        <input type="text" id="visitorName" placeholder="Enter your name" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="visitorMessage">Your Message <span class="char-count">(<span id="charCount">0</span>/200)</span></label>
+                        <textarea id="visitorMessage" placeholder="Write your wishes here..." maxlength="200" rows="4"></textarea>
+                    </div>
+                    <button id="sendBtn" class="send-btn">SEND</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: My Message -->
+        <section class="my-message-section">
+            <div class="container">
+                <h2>My Message For You</h2>
+                <div class="message-card">
+                    <p>Dear All,</p>
+                    <p>I would like to wish all <strong>Thank You</strong> especially <strong>Datuk Syamshuar</strong>, <strong>Ramsyah</strong>, <strong>Azam</strong>, <strong>Mila</strong>, <strong>Mubarak</strong>, <strong>Baim</strong>, <strong>Wey Leng</strong>.</p>
+                    <p>Not forgetting <strong>All HQ TEAM (Rosmah, Shaz, Fatin, Anis, Baiti, Shira, Haziqah), </strong>, <strong>Apy</strong>, <strong>Rahim</strong>, <strong>Roseli</strong>, <strong>Amir</strong>, <strong>Mok</strong>, <strong>Ain</strong> and others that I have interacted with in Greenviro.</p>
+                    <p>It has been <strong>36 months</strong> with Greenviro full time with many memories and lessons.</p>
+                    <p>For <strong>January 2026</strong>, my role will be as consultant to Greenviro less being a full time team.</p>
+                    <p>I would like to wish all the best, we will still be in touch on different basis for 2026.</p>
+                    <p><strong>Thank You Again.</strong></p>
+                    <p class="signature">I will take a week off in Kan 2026 then back as Consultant to Greenviro and the other outfits.</p>
+                    <p class="sign-off">— Azlan A.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Partner Links -->
+        <section class="partner-links-section">
+            <div class="container">
+                <h2>Continuing the Journey</h2>
+                <div class="partner-cards">
+                    <a href="https://agalchemyconsults.com/" target="_blank" class="partner-card">
+                        <div class="partner-flag">🇲🇾</div>
+                        <h3>Malaysia</h3>
+                        <p class="partner-company">CSME Engineering</p>
+                        <p class="partner-name">Partner: <strong>Govind</strong></p>
+                    </a>
+                    <a href="https://greenviro-nusantara.com/" target="_blank" class="partner-card">
+                        <div class="partner-flag">🇮🇩</div>
+                        <h3>Jakarta</h3>
+                        <p class="partner-company">Energy Roadway</p>
+                        <p class="partner-name">Partner: <strong>Nurholis</strong></p>
+                    </a>
+                    <a href="https://gaiada.com/" target="_blank" class="partner-card">
+                        <div class="partner-flag">🇮🇩</div>
+                        <h3>Bali</h3>
+                        <p class="partner-company">Systems & Web Development</p>
+                        <p class="partner-name">Partner: <strong>Anthony</strong></p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Messages Display -->
+        <section class="messages-display-section">
+            <div class="container">
+                <h2>Wishes & Messages</h2>
+                <p class="messages-subtitle">Messages from friends and colleagues</p>
+                <div id="messagesContainer" class="messages-container">
+                    <p class="no-messages" id="noMessages">Be the first to leave a message!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>With gratitude for 36 months of memories 🙏</p>
+    </footer>
+
+    <script src="src/scripts.js"></script>
+</body>
+</html>
