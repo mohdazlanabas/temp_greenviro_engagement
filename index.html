@@ -26,25 +26,8 @@
     </header>
 
     <main>
-        <!-- Section 2: Comments Input Section -->
-        <section class="comments-input-section">
-            <div class="container">
-                <h2>Your Messages Here</h2>
-                <div class="comment-form">
-                    <div class="form-group">
-                        <label for="visitorName">Your Name</label>
-                        <input type="text" id="visitorName" placeholder="Enter your name" maxlength="50">
-                    </div>
-                    <div class="form-group">
-                        <label for="visitorMessage">Your Message <span class="char-count">(<span id="charCount">0</span>/200)</span></label>
-                        <textarea id="visitorMessage" placeholder="Write your wishes here..." maxlength="200" rows="4"></textarea>
-                    </div>
-                    <button id="sendBtn" class="send-btn">SEND</button>
-                </div>
-            </div>
-        </section>
 
-        <!-- Section 3: My Message -->
+        <!-- Section 2: My Message -->
         <section class="my-message-section">
             <div class="container">
                 <h2>My Message For You</h2>
@@ -62,7 +45,36 @@
             </div>
         </section>
 
-        <!-- Section 4: Partner Links -->
+                <!-- Section 3: Comments Input Section -->
+        <section class="comments-input-section">
+            <div class="container">
+                <h2>Your Messages Here</h2>
+                <div class="comment-form">
+                    <div class="form-group">
+                        <label for="visitorName">Your Name</label>
+                        <input type="text" id="visitorName" placeholder="Enter your name" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="visitorMessage">Your Message <span class="char-count">(<span id="charCount">0</span>/200)</span></label>
+                        <textarea id="visitorMessage" placeholder="Write your wishes here..." maxlength="200" rows="4"></textarea>
+                    </div>
+                    <button id="sendBtn" class="send-btn">SEND</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Messages Display -->
+        <section class="messages-display-section">
+            <div class="container">
+                <h2>Wishes & Messages</h2>
+                <p class="messages-subtitle">Messages from friends and colleagues</p>
+                <div id="messagesContainer" class="messages-container">
+                    <p class="no-messages" id="noMessages">Be the first to leave a message!</p>
+                </div>
+            </div>
+        </section>
+
+               <!-- Section 5: Partner Links -->
         <section class="partner-links-section">
             <div class="container">
                 <h2>Continuing the Journey</h2>
@@ -89,16 +101,6 @@
             </div>
         </section>
 
-        <!-- Section 5: Messages Display -->
-        <section class="messages-display-section">
-            <div class="container">
-                <h2>Wishes & Messages</h2>
-                <p class="messages-subtitle">Messages from friends and colleagues</p>
-                <div id="messagesContainer" class="messages-container">
-                    <p class="no-messages" id="noMessages">Be the first to leave a message!</p>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="site-footer">
